@@ -72,7 +72,7 @@ hosts:
   'mtalk.google.com': 108.177.125.188
   # Google Dl
   'dl.google.com': 180.163.151.161
-  'dl.l.google.com': 180.163.151.161
+  'dl.l.google.com': 180.163.151.161 
 
 # DNS 服务配置
 # 这一部分是可选的。当不存在时，DNS服务器将被禁用。
