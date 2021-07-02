@@ -1,0 +1,420 @@
+# 本地端的HTTP(S)代理服务器的端口
+# port: 7890
+
+# 本地端的SOCKS5代理服务器的端口
+# socks-port: 7891
+
+# Linux和macOS的透明代理服务器端口（Redirect TCP和TProxy UDP）。
+# redir-port: 7892
+
+# Linux的透明代理服务器端口（TProxy TCP和TProxy UDP
+# tproxy-port: 7893
+
+# 同一端口的HTTP(S)和SOCKS5服务器
+mixed-port: 7890
+
+# 本地SOCKS5/HTTP（S）服务器的认证
+# authentication:
+#  - "user1:pass1"
+#  - "user2:pass2"
+
+# 设置为 "true"，允许从本地端服务器连接到
+# 其他局域网IP地址
+allow-lan: false
+
+# 这只适用于 "allow-lan "为 "true "时。
+# '*': 绑定所有IP地址
+# 192.168.122.11: bind a single IPv4 address
+# "[aaaa::a8aa:ff:fe09:57d8]": bind a single IPv6 address
+bind-address: '*'
+
+# clash由器的工作模式
+# rule: 基于规则的数据包路由
+# global: 所有数据包将被转发到一个单一的端点
+# direct: 直接将数据包转发到互联网
+mode: rule
+
+# 默认情况下，Clash将日志打印到STDOUT
+# info / warning / error / debug / silent
+log-level: info
+
+# 当设置为false时，解析器将不把主机名翻译成IPv6地址。
+ipv6: false
+
+# RESTful网络API监听地址
+external-controller: 127.0.0.1:9090
+
+# 配置目录的相对路径，或绝对路径，用于放置静态网络资源。
+# 目录，你把一些静态的网络资源放在其中。然后，冲突核心将
+# 在`${API}/ui`处提供服务。
+# external-ui: folder
+
+# RESTful API的秘密(可选)
+# 通过修改HTTP头 "授权 "进行认证。Bearer ${secret}`。
+# 如果RESTful API在0.0.0.0上监听，一定要设置一个密码
+# secret: ""
+
+# 出站接口名称
+# interface-name: en0
+
+# 用于DNS服务器和连接建立的静态主机（如/etc/hosts）。
+#
+# 支持通配符主机名（例如*.clash.dev，*.foo.*.example.com）。
+# 非通配符域名比通配符域名有更高的优先权
+# 例如，foo.example.com > *.example.com > .example.com
+# 附注：+.foo.com等同于.foo.com和foo.com
+hosts:
+  # '*.clash.dev': 127.0.0.1
+  # '.dev': 127.0.0.1
+  # 'alpha.clash.dev': '::1'
+
+  # Firebase Cloud Messaging
+  'mtalk.google.com': 108.177.125.188
+  # Google Dl
+  'dl.google.com': 180.163.151.161
+  'dl.l.google.com': 180.163.151.161
+
+# DNS 服务配置
+# 这一部分是可选的。当不存在时，DNS服务器将被禁用。
+dns:
+  enable: false
+  listen: 0.0.0.0:53
+  # ipv6: false # 当为假时，对AAAA问题的回答将为空
+
+  # 这些名字服务器被用来解析下面的DNS名字服务器主机名。
+  # 仅指定 IP 地址
+  default-nameserver:
+    - 119.29.29.29
+  enhanced-mode: redir-host # or fake-ip
+  fake-ip-range: 198.18.0.1/16 # Fake IP addresses pool CIDR
+  # use-hosts: true # 查询主机并返回IP记录
+
+  # 这个列表中的主机名将不会被解析为假的IP
+  # 也就是说，对这些域名的提问将总是以其
+  # 真正的 IP 地址
+  fake-ip-filter:
+    - '*.lan'
+    - localhost.ptlogin2.qq.com
+    - '+.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - '+.xboxlive.com'
+    - 'msftconnecttest.com'
+    - 'xbox.*.microsoft.com'
+    - '*.battlenet.com.cn'
+    - '*.battlenet.com'
+    - '*.blzstatic.cn'
+    - '*.battle.net'
+  # 支持UDP, TCP, DoT, DoH。你可以指定要连接的端口。
+  # 所有的DNS问题都直接发送到名字服务器，没有代理机构
+  # 涉及。Clash用收集到的第一个结果回答DNS问题。
+  
+  nameserver:
+    - 119.29.29.29
+    # - tls://dns.rubyfish.cn:853 # DNS over TLS
+    # - https://1.1.1.1/dns-query # DNS over HTTPS
+ 
+  # 当`fallback`出现时，DNS服务器将发送并发的请求
+  # 向本节中的服务器和`nameservers`中的服务器发送请求。
+  # 当GEOIP国家不是 "CN "时，将使用后备服务器的答案。
+  # is not `CN`.
+  # fallback:
+  #   - tcp://1.1.1.1
+
+  # 如果用 "nameservers "中的服务器解析的 IP 地址位于指定的
+  # 下面的子网，它们将被视为无效，并使用`fallback`的结果。
+  # 服务器的结果将被替代。
+  #
+  # 用`nameservers`中的服务器解析的IP地址在以下情况下使用
+  # `fallback-filter.geoip`为真，并且IP地址的GEOIP为`CN`。
+  #
+  # 如果`fallback-filter.geoip'为假，则使用`nameserver'中的nameservers结果。
+  # 如果不符合`fallback-filter.ipcidr`，则总是使用`nameserver`的结果。
+  #
+  # 这是对DNS污染攻击的一种对策。
+  fallback-filter:
+    geoip: true
+    ipcidr:
+      # - 240.0.0.0/4
+    # domain:
+    #   - '+.google.com'
+    #   - '+.facebook.com'
+    #   - '+.youtube.com'
+
+#
+# https://github.com/Dreamacro/clash/wiki/premium-core-features
+#
+# tun:
+#   enable: true
+#   stack: system # or gvisor
+#   # dns-hijack:
+#   #   - 8.8.8.8:53
+#   #   - tcp://8.8.8.8:53
+#   macOS-auto-route: true # auto set global route
+#   macOS-auto-detect-interface: true # conflict with interface-name
+
+proxies:
+# 支持的协议及加密算法示例请查阅 Clash 项目 README 以使用最新格式：https://github.com/Dreamacro/clash/wiki/configuration
+
+  # Shadowsocks(Websocket + TLS)
+  - name: "1"
+    type: ss
+    server: server
+    port: 443
+    cipher: chacha20-ietf-poly1305
+    password: "password"
+    plugin: v2ray-plugin
+    plugin-opts:
+      mode: websocket # no QUIC now
+      tls: true # wss
+      # skip-cert-verify: true
+      # host: bing.com
+      path: "/s"
+      # mux: true
+      # headers:
+      #   custom: value
+
+  # VMess(Websocket + TLS)
+  - name: "2"
+    type: vmess
+    server: v2ray.cool
+    port: 443
+    uuid: a3482e88-686a-4a58-8126-99c9df64b7bf
+    alterId: 32
+    cipher: auto
+    # udp: true
+    tls: true
+    # skip-cert-verify: true
+    network: ws
+    ws-path: /v
+    # ws-headers:
+    #   Host: v2ray.com
+
+  # Trojan
+  - name: "3"
+    type: trojan
+    server: server
+    port: 443
+    password: yourpsk
+    # udp: true
+    # sni: example.com # aka server name
+    # alpn:
+    #   - h2
+    #   - http/1.1
+    # skip-cert-verify: true
+
+# 服务器节点订阅
+proxy-providers:
+  # name: # Provider 名称
+  #   type: http # http 或 file
+  #   path: # 文件路径
+  #   url: # 只有当类型为 HTTP 时才可用，您不需要在本地空间中创建新文件。
+  #   interval: # 自动更新间隔，仅在类型为 HTTP 时可用
+  #   health-check: # 健康检查选项从此处开始
+  #     enable:
+  #     url: 
+  #     interval: 
+
+  #
+  # 「url」参数填写订阅链接
+  #
+  # 订阅链接可以使用 API 进行转换，如：https://dove.589669.xyz/web
+  #
+  #
+
+  # 此处只是订阅示例，如果没有订阅链接的使用需求，此处及 proxy-groups 的相关内容可删除
+
+  DuckDuckGoList: #「冲鸭机场」订阅
+    type: http
+    url: "https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/ProxyList/List.yaml" # 放机场订阅链接
+    interval: 3600
+    path: ./Proxy/List.yaml # 注意此处文件名不可相同
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+
+  # DuckDuckGoUS: #「冲鸭机场」订阅美国地区节点
+  #   type: http
+  #   url: "https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/ProxyList/US.yaml" # 放机场订阅链接
+  #   interval: 3600
+  #   path: ./Proxy/US.yaml # 注意此处文件名不可相同
+  #   health-check:
+  #     enable: true
+  #     interval: 600
+  #     url: http://www.gstatic.com/generate_204
+
+proxy-groups:
+# 策略组示例请查阅 Clash 项目 README 以使用最新格式：https://github.com/Dreamacro/clash/wiki/configuration
+
+#
+# 策略组说明
+#
+# 「MATCH」类似 Surge 的「Final」，此处用于选择白名单模式(PROXY 策略)和黑名单模式(DIRECT 策略)
+#
+# 「Streaming」和「StreamingSE」比较好理解，有专用于流媒体的节点就设置到其中，如果没有「StreamingSE」的需求可以连带 Rule 部分一起删掉，「Streaming」需至少保留 Rule，用「PROXY」即可。
+#
+# 「PROXY」是代理规则策略，它可以指定为某个节点或嵌套一个其他策略组，如：「自动测试」、「Fallback」或「负载均衡」的策略组，关于这 3 个策略组的具体示例可以看官方示例：https://github.com/Dreamacro/clash
+#
+
+  # 注意此处的「use」而不是「proxies」，当然也可以不用在此先嵌套一个策略组进行选择，可以直接使用，如
+  #
+  # # 代理节点选择
+  # - name: "PROXY"
+  #   type: select
+  #   use:
+  #     - DuckDuckGo # 嵌套使用订阅节点策略组
+  #   proxies:
+  #     - Fallback
+  #     - 1
+  #     - 2
+  #     - 3
+  #
+  # 但如果订阅节点很多选起来就很麻烦，不如先嵌套一个策略组进行手动或自动的选择。
+
+  # 手动选择订阅节点
+  - name: "DuckDuckGo"
+    type: select # 亦可使用 fallback 或 load-balance
+    use: # 注意此处是「use」
+      - DuckDuckGoList # 这是上面「proxy-providers」的名称
+
+  # - name: "US"
+  #   type: select # 亦可使用 fallback 或 load-balance
+  #   use: # 注意此处是「use」
+  #     - DuckDuckGoUS # 这是上面「proxy-providers」的名称
+
+  # Fallback 比较实用的策略组类型，用于测试服务器节点的可用性，当第一个节点不可用时切换到第二个，以此类推。
+  - name: "Fallback"
+    type: fallback
+    proxies:
+      - 1
+      - 2
+      - 3
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+
+  # 代理节点选择
+  - name: "PROXY"
+    type: select
+    proxies:
+      - Fallback
+      - 1
+      - 2
+      - 3
+      - DuckDuckGo # 嵌套使用订阅节点策略组
+
+  # 白名单模式 PROXY, 黑名单模式 DIRECT, 不知道别动
+  - name: "MATCH"
+    type: select
+    proxies:
+      - PROXY
+      - DIRECT
+
+  # 国际流媒体服务
+  - name: "Streaming"
+    type: select
+    proxies:
+      - PROXY
+      - 1
+      - 2
+      - 3
+      # - US
+
+  # 中国流媒体服务（面向海外版本）
+  # 用于观看部分国内流媒体面向港澳台的地区的限定内容，此处应放港澳台节点，如果没有此需求可删除此处策略组及相关规则
+  - name: "StreamingSE"
+    type: select
+    proxies:
+      - DIRECT
+      - 2
+
+# 关于 Rule Provider 请查阅：https://lancellc.gitbook.io/clash/clash-config-file/rule-provider
+
+rule-providers:
+# name: # Provider 名称
+#   type: http # http 或 file
+#   behavior: classical # 或 ipcidr、domain
+#   path: # 文件路径
+#   url: # 只有当类型为 HTTP 时才可用，您不需要在本地空间中创建新文件。
+#   interval: # 自动更新间隔，仅在类型为 HTTP 时可用
+
+  Unbreak:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Unbreak.yaml
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/Unbreak.yaml
+    interval: 86400
+
+  Streaming:
+    type: http
+    behavior: classical
+    path: ./RuleSet/StreamingMedia/Streaming.yaml
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/StreamingMedia/Streaming.yaml
+    interval: 86400
+
+  StreamingSE:
+    type: http
+    behavior: classical
+    path: ./RuleSet/StreamingMedia/StreamingSE.yaml
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/StreamingMedia/StreamingSE.yaml
+    interval: 86400
+
+  Global:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Global.yaml
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/Global.yaml
+    interval: 86400
+
+  China:
+    type: http
+    behavior: classical
+    path: ./RuleSet/China.yaml
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/China.yaml
+    interval: 86400
+
+  ChinaIP:
+    type: http
+    behavior: ipcidr
+    path: ./RuleSet/Extra/ChinaIP.yaml
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/Extra/ChinaIP.yaml
+    interval: 86400
+
+# 规则
+rules:
+  # Unbreak
+  - RULE-SET,Unbreak,DIRECT
+
+  # Global Area Network
+
+  # (Streaming Media)
+  - RULE-SET,Streaming,Streaming
+
+  # (StreamingSE)
+  - RULE-SET,StreamingSE,StreamingSE
+
+  # (DNS Cache Pollution) / (IP Blackhole) / (Region-Restricted Access Denied) / (Network Jitter)
+  - RULE-SET,Global,PROXY
+
+  # China Area Network
+  - RULE-SET,China,DIRECT
+
+  # Local Area Network
+  - IP-CIDR,192.168.0.0/16,DIRECT
+  - IP-CIDR,10.0.0.0/8,DIRECT
+  - IP-CIDR,172.16.0.0/12,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT
+  - IP-CIDR,100.64.0.0/10,DIRECT
+  - IP-CIDR,224.0.0.0/4,DIRECT
+  - IP-CIDR,fe80::/10,DIRECT
+
+  # （可选）使用来自 ipipdotnet 的 ChinaIP 以解决数据不准确的问题，使用 ChinaIP.yaml 时可禁用下列直至（包括）「GEOIP,CN」规则
+  # - RULE-SET,ChinaIP,DIRECT
+  # Tencent
+  - IP-CIDR,119.28.28.28/32,DIRECT
+  - IP-CIDR,182.254.116.0/24,DIRECT
+  # GeoIP China
+  - GEOIP,CN,DIRECT
+
+  - MATCH,MATCH
