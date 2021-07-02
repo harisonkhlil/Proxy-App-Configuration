@@ -16,7 +16,7 @@
   
   *解决apple上1password总是提示网络错误的问题*
   
-  [China自用规则](https://raw.githubusercontent.com/harisonkhlil/harisonkhlil/main/China%E8%A7%84%E5%88%99%E5%88%86%E6%B5%81.list)
+  [China自用规则](https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/China.list)
   [GFW规则](https://raw.githubusercontent.com/harisonkhlil/harisonkhlil/main/GFW%E8%A7%84%E5%88%99%E5%88%86%E6%B5%81.list)
   
   
