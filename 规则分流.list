@@ -1,5 +1,0 @@
-# 1password app有关网络问题，解决方法：直连
-DOMAIN-SUFFIX,b5n.1password.com,DIRECT
-DOMAIN-SUFFIX,my.1password.com,DIRECT
-# 同人小说网被gfw墙了解决方法：代理
-DOMAIN-SUFFIX,www.trxs.cc,🌑Proxy
