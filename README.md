@@ -10,6 +10,10 @@
 *******************************
   **surge**
   
+  有关某些国内网站打不开的规则：
+  
+  *同人小说网*[链接]()
+  
   
   
   
@@ -19,4 +23,4 @@
   *********************
   **clash**
   
-  目前有神机配置的翻译原配置：[神机配置]()
+  神机配置的翻译：[神机配置](https://raw.githubusercontent.com/harisonkhlil/harisonkhlil/main/Outbound.yaml)
