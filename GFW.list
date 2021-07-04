@@ -1,6 +1,4 @@
-# 同人小说网被gfw墙了解决方法：代理
+# 被GFW墙了的某些网站解决方法代理
 DOMAIN-SUFFIX,trxs.cc
-# 进机场缓慢解决办法：代理
 DOMAIN-SUFFIX,ssltd.xyz
-# 解决搜索书籍的网站无法打开：代理
 DOMAIN-SUFFIX,bks.thefuture.top
