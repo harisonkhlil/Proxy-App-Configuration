@@ -1,4 +1,5 @@
-DOMAIN,mesu.apple.com
-DOMAIN,gdmf.apple.com
-DOMAIN,updates-http.cdn-apple.com
-DOMAIN,xp.apple.com
+host, ns.itunes.apple.com
+host, appldnld.apple.com
+host, mesu.apple.com
+host, xp.apple.com
+host, gdmf.apple.com
