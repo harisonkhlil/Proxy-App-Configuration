@@ -1,8 +1,6 @@
 # 这是自用的surge quantumult X和clash
 **quantumultX**
 
-YouTube广告失效[链接](https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/YoutubeAds.conf)
-
 自用圈X配置[链接](https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/harisonkhlil.conf)
 
 
