@@ -35,3 +35,4 @@
 * [Qure](https://github.com/Koolson/Qure)
 * [Orz-3](https://github.com/Orz-3)
 * [blackmatrix7](https://github.com/blackmatrix7)
+* [DivineEngine](https://github.com/DivineEngine)
