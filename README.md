@@ -1,7 +1,7 @@
 # 这是自用的surge quantumult X和clash
 **quantumultX**
 
-自用圈X配置[链接](https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/harisonkhlil.conf)
+自用圈X配置[链接](https://github.com/harisonkhlil/QurakJkaer-s-conf/blob/main/QuantumultX/harisonkhlil.conf)
 
 
 
