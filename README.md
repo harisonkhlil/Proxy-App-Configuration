@@ -13,7 +13,7 @@
   *********************
   **clash**
   
-  神机配置的翻译：[神机配置](https://raw.githubusercontent.com/harisonkhlil/harisonkhlil/main/Outbound.yaml)
+  神机配置的翻译：[神机配置]https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Clash/Outbound.yaml)
 
 感谢一下大佬的辛勤付出：
 * [ConnersHua](https://github.com/DivineEngine/Profiles/tree/master)
