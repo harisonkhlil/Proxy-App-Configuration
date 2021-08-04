@@ -8,3 +8,4 @@
 
 [Rule]
 AND,((NOT,((OR,((USER-AGENT,Surge*), (RULE-SET,https://raw.githubusercontent.com/NobyDa/Script/master/Surge/Apple.list))))), (SCRIPT,防火墙(规则))),REJECT-TINYGIF
+ 
