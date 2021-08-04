@@ -11,6 +11,44 @@
   
   自用surge配置[链接](https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Surge/surge-pro.conf)
   
+  建议的快捷指令：
+  1. Policy Switch[](https://www.icloud.com/shortcuts/4a661ca02485499685552bd9c40b4d68)
+  2. Surge Switch[](https://www.icloud.com/shortcuts/99ae49288bb84e018332b162a0144a90)
+  
+  
+  建议的模块：
+  ### AAH Porn网站去广告：
+  ```ini
+  https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Surge/AAH-Porn-Ads.sgmodule
+  ```
+  ### iOS系统更新
+  ```ini
+  https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Surge/Blook-Update.sgmodule
+  ```
+  ### 网络防火墙
+  ```ini
+  https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Surge/Network-Blook.sgmodule
+  ```
+  ### 微信屏蔽内链跳转&去广告
+  ```
+  https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Surge/WeChat-Blook.sgmodule
+  ````
+  ### 知乎去广告
+  ```ini
+  https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu_lite.sgmodule
+  ```
+  ### iOS Cookies 模块配置
+  ```ini
+  https://raw.githubusercontent.com/Tartarus2014/Surge-Script/master/Cookie.sgmodule
+  ```
+  ### 开屏去广告
+  ```ini
+  https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/startup/startup.sgmodule
+  ```
+  ### 脚本去广告
+  ```ini
+  https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rewrite/Surge/AdvertisingScript/AdvertisingScript.sgmodule
+  ```
   *********************
   **clash**
   
