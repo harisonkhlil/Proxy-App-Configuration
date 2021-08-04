@@ -11,7 +11,7 @@
 
 ## QuantumultX
 
-### 自用圈X配置
+**自用圈X配置**
 ```ini
 https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/QuantumultX/harisonkhlil.conf
 ```
@@ -34,7 +34,7 @@ https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Quantumult
 *******************************
 ## Surge
 
-  ### 自用Surge配置
+  **自用Surge配置**
   ```ini
   https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Surge/surge-pro.conf
   ```
