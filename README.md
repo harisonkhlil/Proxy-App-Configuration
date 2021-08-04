@@ -9,6 +9,7 @@
 *******************************
   **surge**
   
+  自用surge配置[链接](https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Surge/surge-pro.conf)
   
   *********************
   **clash**
