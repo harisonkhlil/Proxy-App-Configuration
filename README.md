@@ -20,6 +20,8 @@ https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Quantumult
   3. 完整任用AdGuard的广告过滤
   4. 内置Bosjs和Sub-store
   5. 不需Advanc Setting &URL Redirect模块，已内置
+  
+  
   建议的快捷指令：
   1. Policy Switch[](https://www.icloud.com/shortcuts/4a661ca02485499685552bd9c40b4d68)
   2. Surge Switch[](https://www.icloud.com/shortcuts/99ae49288bb84e018332b162a0144a90)
