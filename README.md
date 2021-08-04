@@ -5,7 +5,19 @@
 ```ini
 https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/QuantumultX/harisonkhlil.conf
 ```
-
+### 配置说明
+1. 结合神机规则修改而成
+2. 包含一系列会员订阅
+3. 内置Boxjs和Sub-Store
+4. 包含TikTok日本解锁
+5. 知乎助手Plus
+6. 哔哩哔哩助手
+7. 一系列cookies获取
+8. 扩展搜索
+9. YouTube去广告（会员一定要关了）
+10. 一系列好看的图标
+11. 采用blank7大佬去广告可以吧Adguard卸载了
+12. 重度用户全分流
 
 
 
