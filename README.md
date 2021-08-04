@@ -1,15 +1,19 @@
 # 这是自用的surge quantumult X和clash
 **quantumultX**
 
-自用圈X配置[链接](https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/QuantumultX/harisonkhlil.conf)
+### 自用圈X配置
+```ini
+https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/QuantumultX/harisonkhlil.conf
+```
 
 
 
 
 *******************************
-  **surge**
-  
-  自用surge配置[链接](https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Surge/surge-pro.conf)
+  ### 自用Surge配置
+  ```ini
+  https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Surge/surge-pro.conf
+  ```
   
   建议的快捷指令：
   1. Policy Switch[](https://www.icloud.com/shortcuts/4a661ca02485499685552bd9c40b4d68)
