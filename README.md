@@ -14,7 +14,12 @@ https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Quantumult
   ```ini
   https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Surge/surge-pro.conf
   ```
-  
+  ### 配置说明：
+  1. 结合神级规则修改而成
+  2. 包含扩展搜索
+  3. 完整任用AdGuard的广告过滤
+  4. 内置Bosjs和Sub-store
+  5. 不需Advanc Setting &URL Redirect模块，已内置
   建议的快捷指令：
   1. Policy Switch[](https://www.icloud.com/shortcuts/4a661ca02485499685552bd9c40b4d68)
   2. Surge Switch[](https://www.icloud.com/shortcuts/99ae49288bb84e018332b162a0144a90)
@@ -60,7 +65,7 @@ https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Quantumult
   *********************
   **clash**
   
-  神机配置的翻译：[神机配置]https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Clash/Outbound.yaml)
+  神机配置的**翻译**：[神机配置]https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Clash/Outbound.yaml)
 
 感谢一下大佬的辛勤付出：
 * [ConnersHua](https://github.com/DivineEngine/Profiles/tree/master)
