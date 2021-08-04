@@ -20,7 +20,7 @@ https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Quantumult
   2. Surge Switch[](https://www.icloud.com/shortcuts/99ae49288bb84e018332b162a0144a90)
   具体效果如下
   #### Surge Switch
-  ![Surge Switch](https://i.loli.net/2021/08/04/9eQoIk4FgfWGt6a.png)
+  ![Surge Switch](https://s3.jpg.cm/2021/08/04/IAGSYt.jpg)
   #### Policy Switch
   ![Policy Switch](https://s3.jpg.cm/2021/08/04/IAGHmr.jpg)
   
