@@ -12,3 +12,7 @@ hostname= %APPEND% ios.baertt.com
 中青看点浏览赚 = type=cron,cronexp="20 5 10 * * *",wake-system=1,timeout=1800,script-path=https://raw.githubusercontent.com/Sunert/Script/master/Task/youth_gain.js
 
 中青看点阅读 = type=cron,cronexp=35 */30 */2 * * *,wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Sunert/Script/master/Task/Youth_Read.js
+
+中青看点阅读 = type=http-request,pattern=https:\/\/ios\.baertt\.com\/v5\/article\/info\/get\.json,script-path=https://raw.githubusercontent.com/Sunert/Script/master/Task/Youth_Read.js
+
+中青看点阅读 = type=http-request,pattern=https:\/\/ios\.baertt\.com\/v5\/user\/stay\.json,requires-body=1,script-path=https://raw.githubusercontent.com/Sunert/Script/master/Task/Youth_Read.js
