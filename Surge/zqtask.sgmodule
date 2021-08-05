@@ -1,0 +1,14 @@
+#!name=中青看点薅羊毛
+#!desc=不要关闭
+#system=ios
+
+[MITM]
+hostname= %APPEND% ios.baertt.com
+
+[Script]
+# 薅
+中青看点极速版 = type=cron,cronexp="*/14 5-23 * * *",wake-system=1,timeout=360,script-path=https://raw.githubusercontent.com/Sunert/Script/master/Task/youth.js
+
+中青看点浏览赚 = type=cron,cronexp="20 5 10 * * *",wake-system=1,timeout=1800,script-path=https://raw.githubusercontent.com/Sunert/Script/master/Task/youth_gain.js
+
+中青看点阅读 = type=cron,cronexp=35 */30 */2 * * *,wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Sunert/Script/master/Task/Youth_Read.js
