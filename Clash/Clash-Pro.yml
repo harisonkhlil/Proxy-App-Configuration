@@ -1,0 +1,426 @@
+port: 7890
+socks-port: 7891
+allow-lan: false
+mode: Rule
+log-level: info
+mixed-port: 7890
+external-controller: 127.0.0.1:9090
+hosts:
+  mtalk.google.com: 108.177.125.188
+  dl.google.com: 180.163.151.161
+  dl.l.google.com: 180.163.151.161
+# DNS 服务配置
+# 这一部分是可选的。当不存在时，DNS服务器将被禁用。
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  # ipv6: false # 当为假时，对AAAA问题的回答将为空
+
+  # 这些名字服务器被用来解析下面的DNS名字服务器主机名。
+  # 仅指定 IP 地址
+  default-nameserver:
+    - 119.29.29.29
+  enhanced-mode: redir-host # or fake-ip
+  fake-ip-range: 198.18.0.1/16 # Fake IP addresses pool CIDR
+  # use-hosts: true # 查询主机并返回IP记录
+
+  # 这个列表中的主机名将不会被解析为假的IP
+  # 也就是说，对这些域名的提问将总是以其
+  # 真正的 IP 地址
+  fake-ip-filter:
+    - '*.lan'
+    - localhost.ptlogin2.qq.com
+    - '+.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - '+.xboxlive.com'
+    - 'msftconnecttest.com'
+    - 'xbox.*.microsoft.com'
+    - '*.battlenet.com.cn'
+    - '*.battlenet.com'
+    - '*.blzstatic.cn'
+    - '*.battle.net'
+  # 支持UDP, TCP, DoT, DoH。你可以指定要连接的端口。
+  # 所有的DNS问题都直接发送到名字服务器，没有代理机构
+  # 涉及。Clash用收集到的第一个结果回答DNS问题。
+  
+  nameserver:
+    - 119.29.29.29
+    #  - tls://dns.rubyfish.cn:853 # DNS over TLS
+    #  - https://1.1.1.1/dns-query # DNS over HTTPS
+ 
+  # 当`fallback`出现时，DNS服务器将发送并发的请求
+  # 向本节中的服务器和`nameservers`中的服务器发送请求。
+  # 当GEOIP国家不是 "CN "时，将使用后备服务器的答案。
+  # is not `CN`.
+  # fallback:
+  #   - tcp://1.1.1.1
+
+  # 如果用 "nameservers "中的服务器解析的 IP 地址位于指定的
+  # 下面的子网，它们将被视为无效，并使用`fallback`的结果。
+  # 服务器的结果将被替代。
+  #
+  # 用`nameservers`中的服务器解析的IP地址在以下情况下使用
+  # `fallback-filter.geoip`为真，并且IP地址的GEOIP为`CN`。
+  #
+  # 如果`fallback-filter.geoip'为假，则使用`nameserver'中的nameservers结果。
+  # 如果不符合`fallback-filter.ipcidr`，则总是使用`nameserver`的结果。
+  #
+  # 这是对DNS污染攻击的一种对策。
+  fallback-filter:
+    geoip: true
+    ipcidr:
+      # - 240.0.0.0/4
+    # domain:
+    #   - '+.google.com'
+    #   - '+.facebook.com'
+    #   - '+.youtube.com'
+
+#
+# https://github.com/Dreamacro/clash/wiki/premium-core-features
+# 根据自己选择打开这个选项
+# tun:
+#   enable: true
+#   stack: system # or gvisor
+#   # dns-hijack:
+#   #   - 8.8.8.8:53
+#   #   - tcp://8.8.8.8:53
+#   macOS-auto-route: true # auto set global route
+#   macOS-auto-detect-interface: true # conflict with interface-name
+proxies:
+# 支持的协议及加密算法示例请查阅 Clash 项目 README 以使用最新格式：https://github.com/Dreamacro/clash/wiki/configuration
+
+  # Shadowsocks(Websocket + TLS)
+  - name: "1"
+    type: ss
+    server: server
+    port: 443
+    cipher: chacha20-ietf-poly1305
+    password: "password"
+    plugin: v2ray-plugin
+    plugin-opts:
+      mode: websocket # no QUIC now
+      tls: true # wss
+      # skip-cert-verify: true
+      # host: bing.com
+      path: "/s"
+      # mux: true
+      # headers:
+      #   custom: value
+
+  # VMess(Websocket + TLS)
+  - name: "2"
+    type: vmess
+    server: v2ray.cool
+    port: 443
+    uuid: a3482e88-686a-4a58-8126-99c9df64b7bf
+    alterId: 32
+    cipher: auto
+    # udp: true
+    tls: true
+    # skip-cert-verify: true
+    network: ws
+    ws-path: /v
+    # ws-headers:
+    #   Host: v2ray.com
+
+  # Trojan
+  - name: "3"
+    type: trojan
+    server: server
+    port: 443
+    password: yourpsk
+    # udp: true
+    # sni: example.com # aka server name
+    # alpn:
+    #   - h2
+    #   - http/1.1
+    # skip-cert-verify: true
+# 自己可以先进行订阅筛选
+proxy-providers:
+  🇨🇳 台湾节点:
+    type: http
+    url: 你的订阅链接
+    interval: 3600
+    path: ./Proxy/🇨🇳 台湾节点.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  🇭🇰 香港节点:
+    type: http
+    url: 你的订阅链接
+    interval: 3600
+    path: ./Proxy/🇭🇰 香港节点.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  🇯🇵 日本节点:
+    type: http
+    url: 你的订阅链接
+    path: ./Proxy/🇯🇵 日本节点.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  🇺🇲 美国节点:
+    type: http
+    url: 你的订阅链接
+    interval: 3600
+    path: ./Proxy/🇺🇲 美国节点.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  🇸🇬 新加坡节点:
+    type: http
+    url: 你的订阅链接
+    path: ./Proxy/🇸🇬 新加坡节点.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  🇰🇷 韩国节点:
+    type: http
+    url: 你的订阅链接
+    path: ./Proxy/🇰🇷 韩国节点.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_20
+  ✈️冷门:
+    type: http
+    url: 你的订阅链接
+    path: ./Proxy/✈️冷门.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_20
+proxy-groups:
+  - name: 🇺🇳Global
+    type: select
+    proxies:
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇸🇬 新加坡节点
+      - 🇨🇳 台湾节点
+      - 🇰🇷 韩国节点
+      - ✈️冷门
+  - name: 🇨🇳Inbound
+    type: select
+    proxies:
+      - DIRECT
+  - name: 🧭MATCH
+    type: select
+    proxies:
+      - 🇺🇳Global
+      - 🇨🇳Inbound
+  - name: 🎞Streaming
+    type: select
+    proxies:
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇸🇬 新加坡节点
+      - 🇰🇷 韩国节点
+      - 🇨🇳 台湾节点
+      - ✈️冷门
+  - name: 🎞StreamingSE
+    type: select
+    proxies:
+      - 🇨🇳Inbound
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+  - name: 🛡 网络净化
+    type: select
+    proxies:
+      - REJECT
+  - name: 🎥 奈飞节点
+    type: select
+    proxies:
+      - 🇸🇬 新加坡节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇭🇰 香港节点
+  - name: 🧯Fallback
+    type: fallback
+    proxies:
+      - 🇭🇰 香港节点
+      - 🇰🇷 韩国节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇲 美国节点
+      - 🇯🇵 日本节点
+      - ✈️冷门
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+  - name: 🔍谷歌服务
+    type: select
+    proxies:
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇲 美国节点
+  - name: 🍎 苹果服务
+    type: select
+    proxies:
+      - 🇨🇳Inbound
+      - 🇺🇳Global
+  - name: Ⓜ️ 微软服务
+    type: select
+    proxies:
+      - 🇨🇳Inbound
+      - 🇺🇳Global
+  - name: 🇭🇰 香港节点
+    type: select
+    use:
+      - 🇭🇰 香港节点
+  - name: 🇯🇵 日本节点
+    type: select
+    use:
+      - 🇯🇵 日本节点
+  - name: 🇺🇲 美国节点
+    type: select
+    use:
+      - 🇺🇲 美国节点
+  - name: 🇸🇬 新加坡节点
+    type: select
+    use:
+      - 🇸🇬 新加坡节点
+  - name: 🇨🇳 台湾节点
+    type: select
+    use:
+      - 🇨🇳 台湾节点
+  - name: 🇰🇷 韩国节点
+    type: select
+    use:
+      - 🇰🇷 韩国节点
+  - name: ✈️冷门
+    type: select
+    use:
+      - ✈️冷门
+rule-providers:
+  🔍谷歌服务:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Google/Google.yaml
+    path: ./RuleSet/Google.yaml
+    interval: 86400
+  Ⓜ️ 微软服务:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Microsoft.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml
+    interval: 86400
+  🍎 苹果服务:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Apple.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple.yaml
+    interval: 86400
+  🛑 网络净化1:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Advertising.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising.yaml
+    interval: 86400
+  🛑 网络净化2:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Advertising_Classical.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Classical.yaml
+    interval: 86400
+  🛑 网络净化3:
+    type: http
+    behavior: domain
+    path: ./RuleSet/Advertising_Domain.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Domain.yaml
+    interval: 86400
+  Facebook:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Facebook.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Facebook/Facebook.yaml
+    interval: 86400
+  Bahamut:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Bahamut.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bahamut/Bahamut.yaml
+    interval: 86400
+  YouTube:
+    type: http
+    behavior: classical
+    path: ./RuleSet/YouTube.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml
+    interval: 86400
+  Netflix:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Netflix.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix.yaml
+    interval: 86400
+  Unbreak:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Unbreak.yaml
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/Unbreak.yaml
+    interval: 86400
+  Streaming:
+    type: http
+    behavior: classical
+    path: ./RuleSet/StreamingMedia/Streaming.yaml
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/StreamingMedia/Streaming.yaml
+    interval: 86400
+  StreamingSE:
+    type: http
+    behavior: classical
+    path: ./RuleSet/StreamingMedia/StreamingSE.yaml
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/StreamingMedia/StreamingSE.yaml
+    interval: 86400
+  Global:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Global.yaml
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/Global.yaml
+    interval: 86400
+  China:
+    type: http
+    behavior: classical
+    path: ./RuleSet/China.yaml
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/China.yaml
+    interval: 86400
+  ChinaIP:
+    type: http
+    behavior: ipcidr
+    path: ./RuleSet/Extra/ChinaIP.yaml
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/Extra/ChinaIP.yaml
+    interval: 86400
+rules:
+  - RULE-SET,🔍谷歌服务,🔍谷歌服务
+  - RULE-SET,Ⓜ️ 微软服务,Ⓜ️ 微软服务
+  - RULE-SET,🍎 苹果服务,🍎 苹果服务
+  - RULE-SET,Facebook,IPLCPro3 V2Ray VMess (5x)
+  - RULE-SET,Bahamut,🇨🇳 台湾节点
+  - RULE-SET,YouTube,🎞Streaming
+  - RULE-SET,Netflix,🎥 奈飞节点
+  - RULE-SET,Unbreak,🇨🇳Inbound
+  - RULE-SET,🛑 网络净化1,🛡 网络净化
+  - RULE-SET,🛑 网络净化2,🛡 网络净化
+  - RULE-SET,🛑 网络净化3,🛡 网络净化
+  - RULE-SET,Streaming,🎞Streaming
+  - RULE-SET,StreamingSE,🎞StreamingSE
+  - RULE-SET,Global,🇺🇳Global
+  - RULE-SET,China,🇨🇳Inbound
+  - IP-CIDR,192.168.0.0/16,🇨🇳Inbound
+  - IP-CIDR,10.0.0.0/8,🇨🇳Inbound
+  - IP-CIDR,172.16.0.0/12,🇨🇳Inbound
+  - IP-CIDR,127.0.0.0/8,🇨🇳Inbound
+  - IP-CIDR,100.64.0.0/10,🇨🇳Inbound
+  - IP-CIDR,224.0.0.0/4,🇨🇳Inbound
+  - IP-CIDR,fe80::/10,🇨🇳Inbound
+  - IP-CIDR,119.28.28.28/32,🇨🇳Inbound
+  - IP-CIDR,182.254.116.0/24,🇨🇳Inbound
+  - GEOIP,CN,🇨🇳Inbound
+  - MATCH,🧭MATCH
