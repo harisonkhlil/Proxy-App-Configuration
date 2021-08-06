@@ -89,6 +89,19 @@ https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Quantumult
   https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rewrite/Surge/AdvertisingScript/AdvertisingScript.sgmodule
   ```
   
+***************
+## Clash
+**自用clash配置**
+
+
+```ini
+https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Clash/Clash-Pro.yml
+```
+配置说明：
+1. 根据神机规则改进
+2. **无法直接使用配置（需要有一定基础)**
+3. **请下载RuleSet文件包覆盖你自己的RuleSet文件包**
+4. 高度可自定义
 
 感谢一下大佬的辛勤付出：
 * [ConnersHua](https://github.com/DivineEngine/Profiles/tree/master)
