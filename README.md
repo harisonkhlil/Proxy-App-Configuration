@@ -88,10 +88,7 @@ https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Quantumult
   ```ini
   https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rewrite/Surge/AdvertisingScript/AdvertisingScript.sgmodule
   ```
-  *********************
-## Clash
   
-  神机配置的**翻译**：[神机配置]https://raw.githubusercontent.com/harisonkhlil/QurakJkaer-s-conf/main/Clash/Outbound.yaml)
 
 感谢一下大佬的辛勤付出：
 * [ConnersHua](https://github.com/DivineEngine/Profiles/tree/master)
