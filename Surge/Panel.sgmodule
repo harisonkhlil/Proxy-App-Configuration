@@ -1,5 +1,5 @@
 #!name=Panel Plus
-#!desc=Panel 终极版本
+#!desc=Panel 终极版本（整合多家）
 #!system=ios
 [Panel]
 Sub_info = script-name=Sub_info,style=info,update-interval=-1
